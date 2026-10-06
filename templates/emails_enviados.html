@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Avaliação contínua: Aula 070{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>E-mails enviados</h1>
+    <p>Relação de e-mails enviados para o administrador do sistema, notificando o cadastro de novos usuários.</p>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>De</th>
+            <th>Para</th>
+            <th>Assunto</th>
+            <th>Texto</th>
+            <th>Data/Hora</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for email in sent_emails %}
+        <tr>
+            <td>{{ email.sender }}</td>
+            <td>{{ email.recipients }}</td>
+            <td>{{ email.subject }}</td>
+            <td>{{ email.body }}</td>
+            <td>{{ email.timestamp.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
